@@ -25,7 +25,8 @@ void displayp(Process p[], int n) {
 }
 
 int main() {
-    int n, sum;
+    int n;
+    float sum = 0;
     printf("Enter the number of processes: ");
     scanf("%d", &n);
     Process p[n], temp;
@@ -52,8 +53,8 @@ int main() {
     displayp(p, n);
     printf("\nAverage waiting time:\n");
     for(int i = 0; i<n; i++) {
-        sum+= p[i].bT;
+        sum+= p[i].wT;
     }
-    printf("\n%d", sum);
+    printf("\n%f", sum / 4);
     return 0;
 }
