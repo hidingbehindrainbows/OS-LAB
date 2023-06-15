@@ -61,6 +61,7 @@ int main() {
     }
 
     calculateTimes(p, n);
+    printf("\nIn case there is a change after sorting the order\n");
     displayp(p, n);
     return 0;
 }
