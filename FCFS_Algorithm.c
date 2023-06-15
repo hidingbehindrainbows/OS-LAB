@@ -25,10 +25,10 @@ void displayp(Process p[], int n) {
 }
 
 int main() {
-    int n;
+    int n, sum;
     printf("Enter the number of processes: ");
     scanf("%d", &n);
-    Process p[n];
+    Process p[n], temp;
     for (int i = 0; i < n; i++) {
         printf("Enter the arrival time and burst time for process %d: ", i + 1);
         scanf("%d %d", &p[i].aT, &p[i].bT);
@@ -40,7 +40,7 @@ int main() {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (p[j].aT > p[j + 1].aT) {
-                Process temp = p[j];
+                temp = p[j];
                 p[j] = p[j + 1];
                 p[j + 1] = temp;
             }
@@ -50,5 +50,10 @@ int main() {
     calculateTimes(p, n);
     printf("\nIn case there is a change after sorting the order\n");
     displayp(p, n);
+    printf("\nAverage waiting time:\n");
+    for(int i = 0; i<n; i++) {
+        sum+= p[i].bT;
+    }
+    printf("\n%d", sum);
     return 0;
 }
