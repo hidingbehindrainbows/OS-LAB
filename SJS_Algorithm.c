@@ -65,7 +65,7 @@ int main() {
     displayp(p, n);    
     printf("\nAverage waiting time:\n");
     for(int i = 0; i<n; i++) {
-        sum+= p[i].bT;
+        sum+= p[i].wT;
     }
     printf("\n%d", sum);
     return 0;
