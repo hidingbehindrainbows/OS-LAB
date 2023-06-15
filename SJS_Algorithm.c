@@ -4,13 +4,13 @@ typedef struct {
 } Process;
 
 void sort(Process p[], int n){
-    int temp;
+    Process temp;
     for(int i=0; i<n-1; i++){
         for(int j=0; j<n-i-1; j++){
-            if(p[j].bT > p[j+1].bT ){
-                temp = p[j].bT;
-                p[j].bT = p[j+1].bT;
-                p[j+1].bT = temp;
+            if((p[j].bT + p[j].aT) > (p[j+1].bT + p[j+1].aT) ){
+                temp = p[j];
+                p[j] = p[j+1];
+                p[j+1] = temp;
             }
         }
     }
@@ -18,6 +18,7 @@ void sort(Process p[], int n){
 
 void calculateTimes(Process p[], int n) {
     int currT = 0;
+    sort(p, n);
     for (int i = 0; i < n; i++) {
         p[i].sT = currT;
         p[i].cT = currT + p[i].bT;
@@ -28,7 +29,6 @@ void calculateTimes(Process p[], int n) {
 }
 
 void displayp(Process p[], int n) {
-    sort(p, n);
     printf("Process\tArrival Time\tBurst Time\tStart Time\tCompletion Time\tTurnaround Time\tWaiting Time\n");
     for (int i = 0; i < n; i++) {
         printf("%d\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", p[i].pID, p[i].aT,
@@ -38,10 +38,10 @@ void displayp(Process p[], int n) {
 }
 
 int main() {
-    int n;
+    int n, sum;
     printf("Enter the number of processes: ");
     scanf("%d", &n);
-    Process p[n];
+    Process p[n], temp;
     for (int i = 0; i < n; i++) {
         printf("Enter the arrival time and burst time for process %d: ", i + 1);
         scanf("%d %d", &p[i].aT, &p[i].bT);
@@ -53,7 +53,7 @@ int main() {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             if (p[j].aT > p[j + 1].aT) {
-                Process temp = p[j];
+                temp = p[j];
                 p[j] = p[j + 1];
                 p[j + 1] = temp;
             }
@@ -62,6 +62,11 @@ int main() {
 
     calculateTimes(p, n);
     printf("\nIn case there is a change after sorting the order\n");
-    displayp(p, n);
+    displayp(p, n);    
+    printf("\nAverage waiting time:\n");
+    for(int i = 0; i<n; i++) {
+        sum+= p[i].bT;
+    }
+    printf("\n%d", sum);
     return 0;
 }
