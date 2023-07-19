@@ -2,7 +2,7 @@
 typedef struct {
     int pID,aT,bT,sT,cT,taT,wT;
 } Process;
-
+ 
 void sort(Process p[], int n){
     Process temp;
     for(int i=0; i<n-1; i++){
