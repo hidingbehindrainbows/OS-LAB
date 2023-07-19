@@ -2,7 +2,7 @@
 typedef struct {
     int pID,aT,bT,sT,cT,taT,wT;
 } Process;
-
+ 
 void calculateTimes(Process p[], int n) {
     int currT = 0;
     for (int i = 0; i < n; i++) {
