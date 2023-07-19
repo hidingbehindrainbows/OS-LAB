@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-int temp;
+int temp; 
 int m1[3][3], m2[3][3], mul[3][3];
 int add();
 int subtract();
