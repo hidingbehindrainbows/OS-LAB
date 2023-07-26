@@ -8,7 +8,7 @@ int main()
     printf("Enter the number of processes:\n");
     scanf("%d", &n);                  // Number of resources 
     int f[n], alloc[n][3], max[n][3], ans[n], need[n][m];
-    
+
     for(i = 0; i<n; i++)
     {
         printf("Please enter the A, B and C allocated values of the Process P%d:\n", i);
@@ -27,7 +27,7 @@ int main()
     printf("Is there any extra requirement from any of the Processes? -1 is no:\n");
     scanf("%d", &ch);
       
-    if(ch == -1)
+    if(ch != -1)
     {
         for(i = 0; i<n; i++){
             
@@ -38,6 +38,7 @@ int main()
                     printf("Enter %d Value of P%d", j+1, i);
                     scanf("%d", &ch);
                     alloc[i][j] += ch;
+                    avail[j] -= ch;
                 }
             }
         }
@@ -78,7 +79,7 @@ int main()
         }  
     }  
     flag = 1;  
-    for (int i = 0; i < n; i++)  
+    for (i = 0; i < n; i++)  
     {
         if (f[i] == 0)  
         {  
