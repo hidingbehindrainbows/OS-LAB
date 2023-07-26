@@ -4,9 +4,11 @@ int main()
     // P0, P1, P2, P3, P4 are the Process names here  
   
     int n = 5,  ch, m = 3, i, j, k, avail[3], ind = 0, y = 0,  flag;
-    printf("So like, can you enter the number of processes. That'd be like so cool:\n");
+    // printf("So like, can you enter the number of processes. That'd be like so cool:\n");
+    printf("Enter the number of processes:\n");
     scanf("%d", &n);                  // Number of resources 
     int f[n], alloc[n][3], max[n][3], ans[n], need[n][m];
+    
     for(i = 0; i<n; i++)
     {
         printf("Please enter the A, B and C allocated values of the Process P%d:\n", i);
@@ -24,14 +26,19 @@ int main()
     
     printf("Is there any extra requirement from any of the Processes? -1 is no:\n");
     scanf("%d", &ch);
-    for(i = 0; i<n; i++){
-        if(i == ch)
-        {    
-            for(j = 0; j<m; j++)
-            {
-                printf("Enter %d Value of P%d", j+1, i);
-                scanf("%d", &ch);
-                alloc[i][j] += ch;
+      
+    if(ch == -1)
+    {
+        for(i = 0; i<n; i++){
+            
+            if(i == ch)
+            {    
+                for(j = 0; j<m; j++)
+                {
+                    printf("Enter %d Value of P%d", j+1, i);
+                    scanf("%d", &ch);
+                    alloc[i][j] += ch;
+                }
             }
         }
     }
@@ -72,10 +79,8 @@ int main()
     }  
     flag = 1;  
     for (int i = 0; i < n; i++)  
-    {  
-        if(ch == -1)
-            break;
-        else if (f[i] == 0)  
+    {
+        if (f[i] == 0)  
         {  
             flag = 0;  
             printf("The following system is not safe");  
