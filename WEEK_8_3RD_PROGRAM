@@ -85,12 +85,13 @@ void optimal(int pages[]) {
 
 int main() {
     int pages[NUM_PAGES] = {2, 3, 2, 1, 5, 2, 4, 5, 3, 2};
-
+    int ch;
     printf("Page Reference Sequence: ");
     for (int i = 0; i < NUM_PAGES; i++)
         printf("%2d ", pages[i]);
     printf("\n");
-
+    printf("Enter your choise: 1.FIFO\n2.LRU\n3.Optimal\n");
+    scanf("%d", &ch);
     switch(ch)
     {
         case 1:
